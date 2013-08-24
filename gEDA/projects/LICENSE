@@ -1,0 +1,27 @@
+All files in this directory and below are licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+http://creativecommons.org/licenses/by-sa/3.0/
+
+The licensed files are:
+./bjt-phase-shift-osc/bjt-phase-shift-osc.sch
+./bjtamp/bjtamp.sch
+./amp-2stage/amp-2stage.sch
+./amp-2stage/amp.sch
+./hpfilter-active2/hpfilter-active2.sch
+./integrator/integrator.sch
+./diodevi/diodevi.sch
+./astablemulti/astablemulti.sch
+./rlc/rlc.sch
+./invschmitt/invschmitt.sch
+./voltagefol/voltagefol.sch
+./bjt-colpitts-osc/bjt-colpitts-osc.sch
+./nmosamp/nmosamp.sch
+./comparator/comparator.sch
+./Makefile
+./lpfilter-active1/lpfilter-active1.sch
+./hwr/hwr.sch
+./clipper/clipper.sch
+./op-amp-inv-amp/op-amp-inv-amp.sch
+./voltdiv/voltdiv.sch
+./bjtamp2/bjtamp2.sch
+./cmosinv/cmosinv.sch
+
