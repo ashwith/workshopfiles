@@ -1,0 +1,67 @@
+v 20091004 2
+L 200 0 200 800 3 0 0 0 -1 -1
+L 200 0 800 400 3 0 0 0 -1 -1
+L 800 400 200 800 3 0 0 0 -1 -1
+P 0 600 200 600 1 0 0
+{
+T 0 600 5 10 0 0 0 0 1
+pintype=in
+T 200 600 3 10 1 1 0 0 1
+pinlabel=+
+T 105 645 5 10 1 1 0 6 1
+pinnumber=3
+T 0 600 5 10 0 0 0 0 1
+pinseq=1
+}
+P 0 200 200 200 1 0 0
+{
+T 0 200 5 10 0 0 0 0 1
+pintype=in
+T 255 195 3 10 1 1 0 0 1
+pinlabel=-
+T 105 245 5 10 1 1 0 6 1
+pinnumber=2
+T 0 200 5 10 0 0 0 0 1
+pinseq=2
+}
+P 500 0 500 200 1 0 0
+{
+T 500 0 5 10 0 0 0 0 1
+pintype=pas
+T 700 300 5 10 0 1 180 0 1
+pinlabel=Vee
+T 500 200 5 10 1 1 180 6 1
+pinnumber=4
+T 500 0 5 10 0 0 0 0 1
+pinseq=4
+}
+P 500 800 500 600 1 0 0
+{
+T 500 800 5 10 0 0 0 0 1
+pintype=pas
+T 300 600 5 10 0 1 180 6 1
+pinlabel=Vcc
+T 600 800 5 10 1 1 180 0 1
+pinnumber=7
+T 500 800 5 10 0 0 0 0 1
+pinseq=3
+}
+P 1000 400 800 400 1 0 0
+{
+T 1000 400 5 10 0 0 0 0 1
+pintype=out
+T 800 300 5 10 0 1 0 6 1
+pinlabel=Out
+T 895 445 5 10 1 1 0 0 1
+pinnumber=6
+T 1000 400 5 10 0 0 0 0 1
+pinseq=5
+}
+T 200 900 8 10 1 1 0 0 1
+refdes=X?
+T 600 900 8 10 1 1 0 0 1
+device=LM741
+T 200 1300 8 10 0 0 0 0 1
+description=general purpose op-amp
+T 200 1100 8 10 0 0 0 0 1
+footprint=SO8
