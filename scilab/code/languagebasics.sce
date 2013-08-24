@@ -123,6 +123,7 @@ scf;
 x = -20:0.01:20;
 plot2d(x,feval(x, fpw));
 xtitle("Piecewise Function", "x", "f(x)");
+xgrid(1);
 
 //Exercise 8
 theta = linspace(0,2*%pi, 1000);
@@ -195,6 +196,7 @@ scf;
 plot(Y);
 xtitle("Projectile Motion", "Distance", "Height");
 legend(labels);
+xgrid(1);
 
 //Exercise 12
 function impmag = RCtf(sigma, omega)
