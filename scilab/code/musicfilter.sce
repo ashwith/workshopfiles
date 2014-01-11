@@ -1,5 +1,3 @@
-//Increase available memory
-//
 //    Copyright (c) 2013 Ashwith Jerome Rego
 //
 //    This program is free software: you can redistribute it and/or modify
@@ -15,10 +13,10 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-clear;           // Clear all variables.
-xdel(winsid());  // Close all graphics windows.
-stacksize('max');
-clc;             // Clear command window.
+clear;            // Clear all variables.
+xdel(winsid());   // Close all graphics windows.
+stacksize('max'); //Increase available memory
+clc;              // Clear command window.
 
 //Load the sound clip
 //music1 - music data
