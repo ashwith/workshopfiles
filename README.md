@@ -17,7 +17,7 @@ As of now, you'll find (or will soon find) material on:
 
 1. Linux Basics and Shell Scripting
 2. Circuit schematics and symbols for gEDA. 
-   These can be conveted to netlists for simulation with ngspice
+   These can be converted to netlists for simulation with ngspice
 3. Scilab code
 4. Python code
 
