@@ -1,0 +1,81 @@
+                           A Vim Tutorial
+
+
+What is Vim?
+  
+  - Highly configurable text editor for efficient text editting.
+  - An improvement over vi.
+  - Works for programming, email, LaTeX reports, config files - 
+    anything that involves text files.
+
+
+But I already use notepad++/gedit/<insert your favorite text editor>!
+
+Vim is better. Period.
+  - Has syntax highlighting, code completion, code folding, anything
+    else you'd expect from a programmer's editor.
+  - Vim is excellent at backups
+    . Power outage and UPS didn't work? No problem!
+    . Computer freezes and you need to reset? No problem!
+  - Working in Vim is fast - really fast.
+  - Very powerful search and replace (regex!).
+  - Highly configurable (We'll get to .vimrc).
+        . Have a rather long set of commands? Create a keyboard shortcut.
+        . Syntax highlighting not there for your favorite language (highly
+          unlikely). Create your own (or search online).
+        . Need a feature that doesn't exist? Use plugins.
+  - All of this doesn't require switching between mouse and keyboard.
+  - If you can touch type, you'll love Vim! 
+  - You can change jobs without changing your tools.
+
+
+How do I learn Vim?
+  - Practice and practice
+  - To learn, in your terminal, run $vimtutor
+                 OR
+    Go through with this workshop.
+
+
+Basics
+  - Vim is modal - has insert, command and visual modes.
+  - Use insert mode to type, command mode to run vim commands.
+  - When Vim begins, you're in command mode. Type i to enter into
+    insert mode. If you type, notice that characters appear before character
+    above the cursor.
+  - To get back to command mode, hit the Esc key.
+  - If you're unsure which mode you're in, hit Esc twice.
+
+Moving Around
+  - In command mode, to navigate one character at a time,
+    use the h j k l keys:
+                 
+                             ^
+                             k 
+                       < h       l >
+                             j
+                             v
+
+  - That's a little slow. Use w to advance a word at a time. Use b to move 
+    back one word a time. Use W and B to ignore special character such as the
+    period, comma, etc.
+  - Now combine these with numbers. Try the command 4k. Now try 10b. 
+  - 0 goes to the beginning of the line. $ goes to the end.
+  - ^F and ^B go front and back, respectively by one screen.
+  - Within a screen try H, L and M
+  - Want to go to line number 10? Type 10G.
+  - There's a lot more, but this should get you started.
+  - These shortcuts form the basis for others.
+
+
+Cut/Yank(Copy)/Paste
+  - Vim has the following commands for moving text:
+        . Cut/Delete : d
+        . Copy       : y (stands for yank). 
+        . Paste      : p
+  - The delete and yank commands don't work by themselves.
+  - Do delete the next word type dw. To simply copy it, type yw.
+  - Do delete the previous word type db. See the pattern?
+  - To delete an entire line, use dd (what do you do to copy it?).
+  - Understand how the pattern works. This makes it easier to remember
+    commands.
+  - You can also delete a single character by typing x in command mode.
