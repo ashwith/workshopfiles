@@ -1,5 +1,9 @@
                            A Vim Tutorial
+                           ==============
+                                   - Ashwith Jerome Rego
+                                     ashwith@ee.iitb.ac.in
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 What is Vim?
   
@@ -8,6 +12,7 @@ What is Vim?
   - Works for programming, email, LaTeX reports, config files - 
     anything that involves text files.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 But I already use notepad++/gedit/<insert your favorite text editor>!
 
@@ -28,6 +33,7 @@ Vim is better. Period.
   - If you can touch type, you'll love Vim! 
   - You can change jobs without changing your tools.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 How do I learn Vim?
   - Practice and practice
@@ -35,6 +41,7 @@ How do I learn Vim?
                  OR
     Go through with this workshop.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Basics
   - Vim is modal - has insert, command and visual modes.
@@ -44,6 +51,8 @@ Basics
     above the cursor.
   - To get back to command mode, hit the Esc key.
   - If you're unsure which mode you're in, hit Esc twice.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Moving Around
   - In command mode, to navigate one character at a time,
@@ -66,6 +75,7 @@ Moving Around
   - There's a lot more, but this should get you started.
   - These shortcuts form the basis for others.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Cut/Yank(Copy)/Paste
   - Vim has the following commands for moving text:
@@ -76,6 +86,27 @@ Cut/Yank(Copy)/Paste
   - Do delete the next word type dw. To simply copy it, type yw.
   - Do delete the previous word type db. See the pattern?
   - To delete an entire line, use dd (what do you do to copy it?).
+  - You can also repeat the command using numbers: 2dd, 2dw, 2db
   - Understand how the pattern works. This makes it easier to remember
     commands.
   - You can also delete a single character by typing x in command mode.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Editing text
+  - We've already covered i - it lets you start adding text before the cursor
+    position.
+  - To append text, type a instead.
+  - Use c to change. Just like the d/y commands, c doesn't work by itself:
+       cc  - change line
+       cw  - change word
+       c$  - from cursor to end of line
+       2cw - change two words
+       ... you get the picture :-)
+  - The command 4s lets you change 4 characters (not entire words).
+  - R command lets you replace text till you hit Esc.
+  - You can join two lines using J
+  - Repeat previous command using the period key .
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
