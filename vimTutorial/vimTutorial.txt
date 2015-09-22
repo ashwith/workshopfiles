@@ -75,7 +75,7 @@ Moving Around
     period, comma, etc.
   - Now combine these with numbers. Try the command 4k. Now try 10b. 
   - 0 goes to the beginning of the line. $ goes to the end.
-  - ^F and ^B go front and back, respectively by one screen.
+  - Ctrl-F and Ctrl-B go front and back, respectively by one screen.
   - Within a screen try H, L and M
   - Want to go to line number 10? Type 10G.
   - There's a lot more, but this should get you started.
@@ -113,6 +113,8 @@ Editing text
   - R command lets you replace text till you hit Esc.
   - You can join two lines using J
   - Repeat previous command using the period key .
+  - To undo an operation type u.
+  - To redo, type Ctrl-R
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -186,7 +188,7 @@ Settings in Vim
 
   - You can also use various color schemes in Vim. To set a color scheme, try
     typing :color darkblue to change the color scheme. You can also type :color
-    followed by Ctrl + D to list the list of color schemes available. Adding
+    followed by Ctrl-D to list the list of color schemes available. Adding
     the line "color darkblue" (without quotes) will ensure that vim always
     loads with this color scheme.
   - Vim's color schemes are stored in .vim files. You can get several of these
@@ -201,4 +203,12 @@ Settings in Vim
 Features for Programmers - Syntax Highlighting, code folding, code completion
                            and others.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Search and Replace
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Miscellaneous features - spell check, backups and crash recovery
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
