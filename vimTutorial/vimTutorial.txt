@@ -51,6 +51,12 @@ Basics
     above the cursor.
   - To get back to command mode, hit the Esc key.
   - If you're unsure which mode you're in, hit Esc twice.
+  - To save a file, in command mode, type :w
+  - To quit, type :q
+  - To save and quit, type :wq
+  - If you have any unsaved changes, Vim won't allow you to quit using :q. To
+    force quite and ignore any changes, type :q!
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -109,4 +115,90 @@ Editing text
   - Repeat previous command using the period key .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Buffers and markers
+  - Vim allows you to cut/copy stuff to a named buffer. There are 26 named
+    buffers - named by the letters of the alphabet.
+  - To yank a line to the buffer 'b', type "byy. The quote " tells vim that
+    you're accessing a named buffer. The character following that is the name 
+    of the buffer you want to yank to. You can use the pattern we've
+    learned to use other combinations:
+        "xyw - yank word to buffer x
+        "xp  - paste from buffer x
+        "yd  - delete line and store it in buffer y.
+        and so on.
+  - Vim also saves your last 9 deletions to numbered buffers. Follow the same
+    pattern - "3p will paste the third last deletion.
+  - You've seen that you can use, say 10yy to yank 10 lines of text. For larger
+    blocks, it can ge hard to count the number of lines. Vim allows you to 
+    create markers to various positions in your file. Just like buffers, you
+    have 26 named markers.
+  - To mark a line with the marker j, type mj. To go to the line marked with 
+    marker j, type 'j.
+  - Now, to yank from marker a to marker b, simply type 'ay'b.
+  - Notice that 'm will go the the first character of the line marked as m.
+    If you use `m, it'll go to the exact position where you placed the marker.
+  - Suppose you moved to a marker a and want to move back to the position prior
+    to this, use `` or '' (can you see the difference between the two?).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Settings in Vim
+  - Vim allows a lot of customization. This can be through options in your
+    vimrc, scripts and plugins. We'll cover the vimrc for now.
+  - The settings for vim are stored in a file called vimrc. In a *nix system,
+    the file is stored as .vimrc in your home directory. There is also a
+    default vimrc at /etc/vimrc which is read before your local vimrc.
+  - Within vim one can change settings by using :set <setting name>. Suppose
+    you want to show line numbers, you can type :set number. To disable the
+    line numbers, type :set nonumber - this is another patter to remember. Any
+    setting is turned off by adding "no" before the setting name. Many settings
+    also have short forms. The line number setting can also be turned on by
+    typing :se nu and turned off by typing :se nonu.
+  - Here are the list of settings I use in my vimrc:
+
+      se nocompatible
+      se cmdheight=2
+      se mousehide
+      se nohlsearch
+      se incsearch
+      se ruler
+      se autoindent
+      se expandtab
+      se tabstop=2
+      se textwidth=79
+      se autoindent
+      se shiftwidth=2
+      se softtabstop=2
+      se guifont=Monospace\ 10
+      se colorcolumn=80
+      se noerrorbells
+      se laststatus=2
+      se t_Co=256
+      se fillchars+=stl:\ ,stlnc:\
+      se encoding=utf-8
+      se clipboard=unnamed
+      se mouse=a
+    Some of these will be obvious and some won't. To know what a setting does,
+    type :help <setting name>. Type :help expandtab to know what it does. This
+    setting is very helpful for programmers but must be turned off while
+    writing Makefiles (that's another tutorial!).
+
+  - You can also use various color schemes in Vim. To set a color scheme, try
+    typing :color darkblue to change the color scheme. You can also type :color
+    followed by Ctrl + D to list the list of color schemes available. Adding
+    the line "color darkblue" (without quotes) will ensure that vim always
+    loads with this color scheme.
+  - Vim's color schemes are stored in .vim files. You can get several of these
+    online. As an example, I use the jellybeans scheme available on
+            https://github.com/nanotech/jellybeans.vim
+    To "install" a scheme, go to ~/.vim/colors directory (create them if they
+    doesn't exist) and save the downloaded file there. Then use the color
+    option followed by the name of the .vim file (without the extension).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Features for Programmers - Syntax Highlighting, code folding, code completion
+                           and others.
+
 
