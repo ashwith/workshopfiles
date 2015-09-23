@@ -6,6 +6,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 What is Vim?
+------------
   
   - Highly configurable text editor for efficient text editting.
   - An improvement over vi.
@@ -15,6 +16,7 @@ What is Vim?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 But I already use notepad++/gedit/<insert your favorite text editor>!
+---------------------------------------------------------------------
 
 Vim is better. Period.
   - Has syntax highlighting, code completion, code folding, anything
@@ -36,6 +38,8 @@ Vim is better. Period.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 How do I learn Vim?
+-------------------
+
   - Practice and practice
   - To learn, in your terminal, run $vimtutor
                  OR
@@ -44,8 +48,13 @@ How do I learn Vim?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Basics
+------
+
   - Vim is modal - has insert, command and visual modes.
   - Use insert mode to type, command mode to run vim commands.
+  - There are two visual modes. Typing v enters visual mode that allows you to
+    select one character at a time. Typing V enters visual line mode that
+    allows you to select one line at a time.
   - When Vim begins, you're in command mode. Type i to enter into
     insert mode. If you type, notice that characters appear before character
     above the cursor.
@@ -61,6 +70,8 @@ Basics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Moving Around
+-------------
+
   - In command mode, to navigate one character at a time,
     use the h j k l keys:
                  
@@ -69,7 +80,9 @@ Moving Around
                        < h       l >
                              j
                              v
-
+    
+     
+      
   - That's a little slow. Use w to advance a word at a time. Use b to move 
     back one word a time. Use W and B to ignore special character such as the
     period, comma, etc.
@@ -84,6 +97,8 @@ Moving Around
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Cut/Yank(Copy)/Paste
+--------------------
+
   - Vim has the following commands for moving text:
         . Cut/Delete : d
         . Copy       : y (stands for yank). 
@@ -100,6 +115,8 @@ Cut/Yank(Copy)/Paste
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Editing text
+------------
+
   - We've already covered i - it lets you start adding text before the cursor
     position.
   - To append text, type a instead.
@@ -118,7 +135,24 @@ Editing text
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Visual Mode
+-----------
+  - Now that we're a bit familiar with vim, we can talk about the visual mode.
+    As mentioned in the introduction there are actually two forms of visual
+    mode - visual mode and visual line mode.
+  - Visual mode lets you select text. This can be intuitive when copying a
+    block of text which doesn't have markers (or if you don't remember what
+    they are). All you need to do is go to visual mode, select the text you
+    want to copy and then hit y (just once) to yank the selection. Hitting p
+    will paste it.
+  - Within visual mode you can use the o key to switch between the beginning
+    and ending of the selection.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Buffers and markers
+-------------------
+
   - Vim allows you to cut/copy stuff to a named buffer. There are 26 named
     buffers - named by the letters of the alphabet.
   - To yank a line to the buffer 'b', type "byy. The quote " tells vim that
@@ -146,6 +180,8 @@ Buffers and markers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Settings in Vim
+---------------
+
   - Vim allows a lot of customization. This can be through options in your
     vimrc, scripts and plugins. We'll cover the vimrc for now.
   - The settings for vim are stored in a file called vimrc. In a *nix system,
@@ -200,15 +236,264 @@ Settings in Vim
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Features for Programmers - Syntax Highlighting, code folding, code completion
-                           and others.
+Features for Programmers
+------------------------
+
+  Syntax Highlighting
+  -------------------
+
+  - Syntax highlighting should work by default. Vim looks at the file extension
+    to determine which language you're using and works accordingly.
+  - If you don't see syntax highlighting in your code, it could mean either of
+    the two things:
+      . Vim doesn't recongize the file extension (or you're not using the
+      correct one). You can fix this by typing :set syntax=<languagecode>. As
+      an example, to enable C++ syntax highlighting, type :set syntax=cpp.
+      . Vim doesn't have a syntax file for this language (happened to me with
+      SPICE netlist). In such a case, you'll need to create your own syntax
+      file. This can be a pain but in most cases you should be able to find on
+      online. Download the file (it has a .vim extension) and place it in
+      ~/.vim/syntax (create the .vim and syntax directories if they don't
+      exist). You can then use :se syntax=<filenamewithoutextension> to enable
+      syntax highlighting.
+      . The two points above show you how to enable syntax highlighting within
+      vim But you may want it enabled by default for these unrecognized
+      extensions. To do so add the following to your vimrc:
+          
+au BufRead,BufNewFile *.extension1,*.extension2... setfiletype <syntaxFilename>
+
+      As an example, here's what I did for SPICE:
+
+au BufRead,BufNewFile *.cir,*.net setfiletype spice
+  
+  Code Folding
+  ------------
+
+  - Vim also allows code folding. This can be done in four modes:
+      . manual
+      . indent
+      . syntax
+      . expr
+  - We'll discuss the manual and syntax methods. You can set the fold method by
+    typing :se foldmethod=manual or :se foldmethod=syntax. Manual the default.
+    You can add the latter to your vimrc to make it the default.
+
+  - The manual method requires the use of the cursor movement commands or
+    markers. As an example, to fold 3 lines starting from the current cursor,
+    type zf2j (2 because the current line is also included). To fold from one
+    marker to the other type 'azf'b.
+  - The syntax method looks at the syntax file (the same one used to
+    highlighting) and figures out where code folding is appropriate (if
+    statements for example).
+  - So we know how to create a fold. How do we unfold it? Simply go the line
+    containing the folded code and type zo.
+  - To fold the code back, go to any line in the code that was previously
+    folded and type zc.
+  - You can even toggle between the two using za.
+  - You'll notice that by default, any fold you create manually are lost when
+    you close the file and repoen it. In most cases, we would like vim to
+    remember how we left the code. You can do so by enabling views. Add the 
+    following to your vimrc:
+
+set viewoptions-=options
+augroup vimrc
+    autocmd BufWritePost *
+    \   if expand('%') != '' && &buftype !~ 'nofile'
+    \|      mkview
+    \|  endif
+    autocmd BufRead *
+    \   if expand('%') != '' && &buftype !~ 'nofile'
+    \|      silent loadview
+    \|  endif
+augroup END
+ 
+ Code Completion and Compilation
+ -------------------------------
+
+ - Vim also allows code completion (like you may have seen in Visual studio).
+   It works out of the box for C. Any other language needs some configuring.
+   C++ in particular requires a bit of work. The process is described in the
+   vim wiki. In any case, once you've set up code completion, in insert mode, 
+   simply type Ctrl-X Ctrl-O to open a menu list of possible words.
+ - Compiling from within vim is quite straightforward as well. Suppose you have
+   a Makefile written for your project, you can simply type :!make in command
+   mode. In fact you can run any shell command by first typing :! followed by
+   the command.
+
+ Filesystem/Project Browsing
+ ---------------------------
+
+ - Vim also allows you to browse the contents of yoru file system. Simply type
+   :E to go to open the file explorer (you can also type !Ex or !Explore).
+ - You'll notice that explore opens a split screen within your editor. To make
+   the explorer take up your full screen add a ! at the end (i.e. :E!).
+ - To open a file or directory, go to the line containing it and hit Enter.
+ - Vim also allows you to directly open a file which has been referenced in
+   your code (like you would do with a #include directive in C/C++). This works
+   if the file is in the current working directory or in the include path (you
+   can find out your include path by typing :se path?).
+ - To open the file, place the cursor under the filename and type gf. Try this
+   in a C program. Type #include<stdio.h>, place your cursor under the string
+   stdio.h and hit gf. Note that the #include isn't really necessary for gf to
+   work. See how easy it is to jump between files in a project.
+
+ Split Screens and vimdiff
+ -------------------------
+
+ - The last feature we'll look at for programs is split screens. Many times,
+   you'll have a long source file. You'll be typing some code at the end and
+   may need to keep going back to the top to refer to some previous codes.
+   Split screens help you by creating panels within vim. You can then view one
+   part of your code in one panel and edit in the other. To split horizontally
+   type :sp and to split vertically type :vsp.
+ - Screen splitting isn't restricted to opening the same file. You can also
+   create panels with different files in each. To do so type the split command
+   followed by the file name i.e., :sp filename.
+ - Split screens also help you compare two files which is helpful while merging
+   code in a repository. Vim actually goes one step further by giving you the
+   diff feature. Two compare two (or more files), type: 
+  
+   vimdiff file1, file2,...
+   
+   You'll notice that vim will open the two files in a vertically split window.
+   You'll also notice that vim will fold text that is identical in the two
+   files and only show you the differences.
+
+  
+  Code Indentation
+  ----------------
+
+  - Vim supports features for autoindentation. You can use se ai to enable the
+    autoindent feature. This simply copies the indentation of the previous
+    line. This option should normally serve your purpose.
+  - If you're someone who helps at forums such as stackoverflow (or if you're
+    someone teaching a class that involves programming), more often than not,
+    you'll see ugly unindented code. Vim can fix this quickly using the =
+    command which applies automatic indentation depending on the file type.
+    Like some of the commands you've seen before, = requires either the
+    movement commands or markers. As an example, to autoindent the entire file,
+    type gg=G and to indent between two markers, type 'a='b
+  - To manually indent a line by one level (one tab), go to the line and type
+    >>.
+  - To do so for a block of text, go to visual line mode by typing V. Then
+    use the movement commands (or arrow keys) to select the lines of code you
+    want to indent. Then hit > (just once).
+
+  Other Bits
+  ----------
+
+  - Vim can help you move from one matching brace/bracket in your code to the
+    other. Simply go to one of the characters and type % (Shift-5). You can
+    combine this with yank and delete commands to copy/delete blocks of code.
+  - The ~ command helps you toggle the case of a single character (or a
+    selection of character sin visual mode.
+  - More on changing case: Select a block of text in visual mode. Type gU to
+    change the selection to upper case. Type gu to change it all to lower case.
+    You can do this using the movement keys as well - guw will change the word
+    to lower case and gUU will change a line to upper case
+
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Search and Replace
+------------------
+
+  - Vim has very powerful search and replace capabilities. In most editors, you
+    are required to open a separate find and replace dialog box and switch
+    between the mouse and keyboard.
+
+  Searching
+  ---------
+  - We'll look at search first. Suppose you want to search for errors in a log
+    file. You know that the word "ERROR" will occur in the line containing the
+    error message. You can type the following to search for the word ERROR:
+
+    /ERROR
+    
+    The forward slash tells vim you're performing a search. Searching is a lot
+    more powerful since vim supports regular expressions - a language meant for
+    pattern matching. We won't cover everything here since that would requite
+    another tutorial. We'll look at some basics for now.
+
+  - Searching for whole words              : /\<ERROR\>
+  - You can also search for a whole word by placing the cursor under the word
+    you're looking for and then, in command mode, typing * (Shift-8) or #
+    (Shift-3). Can you see the difference between the two?
+  - If ERROR is the first word in the line : /^ERROR
+  - If you want to match a single character but don't know what the charactor
+    is, type . (similar to ? in DOS). Thus if you know that string you're
+    looking for could be either kubuntu or xubuntu, you can type /.ubuntu
+  - The * token is one you'll find very useful. * means "match 0 or more
+    repitions of the character preceeding the *". Thus typing /w.*y would match
+    both wordy and wonderfully. Using .* is quite similar to using * in DOS
+  - You can also use $ to represent the end of a line.
+  - Regular expressions give you very powerul pattern matching abilities but
+    we'll stop with so much for now.
+
+  Search and Replace
+  ------------------
+  - Vim was built on vi which in turn was built on top of the ex editor. The ex
+    editor is a line editor with very powerful search and replace capabilities.
+    We won't go into this in too much detail because that would require a
+    separate tutorial (on regular expressions, which we'll see in a bit).
+  - Speaking about the ex editor, you've been using a lot of its features
+    already. Every command that starts with a : is an ex command. The : symbol
+    tells vim to go to ex mode.
+  - Suppose you have a variable called "name" in your code and you want to
+    change it to firstName in all places, type the following:
+      
+      :%s/name/firstName/g
+
+    Let's break this down a bit. As stated above, the : tells vim to go to ex
+    mode. The % means that ex should apply the command to all lines in the
+    file. Omitting it would make the command work only on the current line. The
+    command is followed by a forward slash - / and then by the pattern you want
+    to search for. The pattern is followed by another forward slash. Next you
+    add the replacement string followed by a last forward slash. Finally you
+    see g which stands for global. Without it, ex would do the replacement only
+    in the first occurence of a particular line.
+  - There may be times when you want vim to ask you if you want to do the
+    replacement. In such a case type,
+
+      :%s/name/firstName/gc
+
+    Where c means confirm
+  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Miscellaneous features - spell check, backups and crash recovery
+
+  - Vim has a dictionary that allows for spell check and spell suggestions.
+  - To turn spell check on, type :set spell. Vim will now highlight all
+    spelling errors. To turn off spell check (you guessed it) :set nospell.
+  - With spell check on, go to a highlighted word and type z= to open a list of
+    suggestions. Type the serial number of the suggestion to make the change.
+    If you are sure that the spelling you typed is correct, you can add it to
+    vim's dictionary by typing zg.
+  - Vim allows you to easily navigate to all spelling errors. Type ]s to move
+    to the next error and [s to move to the previous.
+
+  - Vim allows you to save a backup of the file you're editing (i.e. the
+    previous version - just one). To do this type :set backup (or add it to
+    your vimrc).
+
+  - Most importantly, vim helps you recover easily from crashes. Vim creates a
+    swap file which contains the changes you made since you opened the file.
+    The swap file is updated either after you type 200 characters or if you 
+    don't type anything for 4 seconds.
+  - Suppose vim or your computer crashes and you need to recover your file. Run
+    the following:
+    
+      vim -r filename
+
+  - If you started with an unamed file type
+
+      vim -r ""
+   
+  - To list the files that can be recovered type
+
+      vim -r
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
