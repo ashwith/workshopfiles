@@ -8,7 +8,7 @@
 What is Vim?
 ------------
   
-  - Highly configurable text editor for efficient text editting.
+  - Highly configurable text editor for efficient text editing.
   - An improvement over vi.
   - Works for programming, email, LaTeX reports, config files - 
     anything that involves text files.
@@ -41,7 +41,7 @@ How do I learn Vim?
 -------------------
 
   - Practice and practice
-  - To learn, in your terminal, run $vimtutor
+  - To learn, in your terminal, run $Vimtutor
                  OR
     Go through with this workshop.
 
@@ -51,7 +51,7 @@ Basics
 ------
 
   - Vim is modal - has insert, command and visual modes.
-  - Use insert mode to type, command mode to run vim commands.
+  - Use insert mode to type, command mode to run Vim commands.
   - There are two visual modes. Typing v enters visual mode that allows you to
     select one character at a time. Typing V enters visual line mode that
     allows you to select one line at a time.
@@ -125,7 +125,7 @@ Editing text
        cw  - change word
        c$  - from cursor to end of line
        2cw - change two words
-       ... you get the picture :-)
+       ... You get the picture :-)
   - The command 4s lets you change 4 characters (not entire words).
   - R command lets you replace text till you hit Esc.
   - You can join two lines using J
@@ -137,7 +137,7 @@ Editing text
 
 Visual Mode
 -----------
-  - Now that we're a bit familiar with vim, we can talk about the visual mode.
+  - Now that we're a bit familiar with Vim, we can talk about the visual mode.
     As mentioned in the introduction there are actually two forms of visual
     mode - visual mode and visual line mode.
   - Visual mode lets you select text. This can be intuitive when copying a
@@ -155,7 +155,7 @@ Buffers and markers
 
   - Vim allows you to cut/copy stuff to a named buffer. There are 26 named
     buffers - named by the letters of the alphabet.
-  - To yank a line to the buffer 'b', type "byy. The quote " tells vim that
+  - To yank a line to the buffer 'b', type "byy. The quote " tells Vim that
     you're accessing a named buffer. The character following that is the name 
     of the buffer you want to yank to. You can use the pattern we've
     learned to use other combinations:
@@ -172,7 +172,7 @@ Buffers and markers
   - To mark a line with the marker j, type mj. To go to the line marked with 
     marker j, type 'j.
   - Now, to yank from marker a to marker b, simply type 'ay'b.
-  - Notice that 'm will go the the first character of the line marked as m.
+  - Notice that 'm will go the first character of the line marked as m.
     If you use `m, it'll go to the exact position where you placed the marker.
   - Suppose you moved to a marker a and want to move back to the position prior
     to this, use `` or '' (can you see the difference between the two?).
@@ -184,10 +184,10 @@ Settings in Vim
 
   - Vim allows a lot of customization. This can be through options in your
     vimrc, scripts and plugins. We'll cover the vimrc for now.
-  - The settings for vim are stored in a file called vimrc. In a *nix system,
+  - The settings for Vim are stored in a file called vimrc. In a *nix system,
     the file is stored as .vimrc in your home directory. There is also a
     default vimrc at /etc/vimrc which is read before your local vimrc.
-  - Within vim one can change settings by using :set <setting name>. Suppose
+  - Within Vim one can change settings by using :set <setting name>. Suppose
     you want to show line numbers, you can type :set number. To disable the
     line numbers, type :set nonumber - this is another patter to remember. Any
     setting is turned off by adding "no" before the setting name. Many settings
@@ -225,14 +225,14 @@ Settings in Vim
   - You can also use various color schemes in Vim. To set a color scheme, try
     typing :color darkblue to change the color scheme. You can also type :color
     followed by Ctrl-D to list the list of color schemes available. Adding
-    the line "color darkblue" (without quotes) will ensure that vim always
+    the line "color darkblue" (without quotes) will ensure that Vim always
     loads with this color scheme.
-  - Vim's color schemes are stored in .vim files. You can get several of these
+  - Vim's color schemes are stored in .Vim files. You can get several of these
     online. As an example, I use the jellybeans scheme available on
-            https://github.com/nanotech/jellybeans.vim
-    To "install" a scheme, go to ~/.vim/colors directory (create them if they
+            https://github.com/nanotech/jellybeans.Vim
+    To "install" a scheme, go to ~/.Vim/colors directory (create them if they
     doesn't exist) and save the downloaded file there. Then use the color
-    option followed by the name of the .vim file (without the extension).
+    option followed by the name of the .Vim file (without the extension).
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -246,18 +246,18 @@ Features for Programmers
     to determine which language you're using and works accordingly.
   - If you don't see syntax highlighting in your code, it could mean either of
     the two things:
-      . Vim doesn't recongize the file extension (or you're not using the
+      . Vim doesn't recognize the file extension (or you're not using the
       correct one). You can fix this by typing :set syntax=<languagecode>. As
       an example, to enable C++ syntax highlighting, type :set syntax=cpp.
       . Vim doesn't have a syntax file for this language (happened to me with
       SPICE netlist). In such a case, you'll need to create your own syntax
       file. This can be a pain but in most cases you should be able to find on
-      online. Download the file (it has a .vim extension) and place it in
-      ~/.vim/syntax (create the .vim and syntax directories if they don't
+      online. Download the file (it has a .Vim extension) and place it in
+      ~/.Vim/syntax (create the .Vim and syntax directories if they don't
       exist). You can then use :se syntax=<filenamewithoutextension> to enable
       syntax highlighting.
       . The two points above show you how to enable syntax highlighting within
-      vim But you may want it enabled by default for these unrecognized
+      Vim But you may want it enabled by default for these unrecognized
       extensions. To do so add the following to your vimrc:
           
 au BufRead,BufNewFile *.extension1,*.extension2... setfiletype <syntaxFilename>
@@ -291,7 +291,7 @@ au BufRead,BufNewFile *.cir,*.net setfiletype spice
     folded and type zc.
   - You can even toggle between the two using za.
   - You'll notice that by default, any fold you create manually are lost when
-    you close the file and repoen it. In most cases, we would like vim to
+    you close the file and repoen it. In most cases, we would like Vim to
     remember how we left the code. You can do so by enabling views. Add the 
     following to your vimrc:
 
@@ -313,17 +313,17 @@ augroup END
  - Vim also allows code completion (like you may have seen in Visual studio).
    It works out of the box for C. Any other language needs some configuring.
    C++ in particular requires a bit of work. The process is described in the
-   vim wiki. In any case, once you've set up code completion, in insert mode, 
+   Vim wiki. In any case, once you've set up code completion, in insert mode, 
    simply type Ctrl-X Ctrl-O to open a menu list of possible words.
- - Compiling from within vim is quite straightforward as well. Suppose you have
+ - Compiling from within Vim is quite straightforward as well. Suppose you have
    a Makefile written for your project, you can simply type :!make in command
    mode. In fact you can run any shell command by first typing :! followed by
    the command.
 
- Filesystem/Project Browsing
+ File system/Project Browsing
  ---------------------------
 
- - Vim also allows you to browse the contents of yoru file system. Simply type
+ - Vim also allows you to browse the contents of your file system. Simply type
    :E to go to open the file explorer (you can also type !Ex or !Explore).
  - You'll notice that explore opens a split screen within your editor. To make
    the explorer take up your full screen add a ! at the end (i.e. :E!).
@@ -343,7 +343,7 @@ augroup END
  - The last feature we'll look at for programs is split screens. Many times,
    you'll have a long source file. You'll be typing some code at the end and
    may need to keep going back to the top to refer to some previous codes.
-   Split screens help you by creating panels within vim. You can then view one
+   Split screens help you by creating panels within Vim. You can then view one
    part of your code in one panel and edit in the other. To split horizontally
    type :sp and to split vertically type :vsp.
  - Screen splitting isn't restricted to opening the same file. You can also
@@ -355,8 +355,8 @@ augroup END
   
    vimdiff file1, file2,...
    
-   You'll notice that vim will open the two files in a vertically split window.
-   You'll also notice that vim will fold text that is identical in the two
+   You'll notice that Vim will open the two files in a vertically split window.
+   You'll also notice that Vim will fold text that is identical in the two
    files and only show you the differences.
 
   
@@ -411,8 +411,8 @@ Search and Replace
 
     /ERROR
     
-    The forward slash tells vim you're performing a search. Searching is a lot
-    more powerful since vim supports regular expressions - a language meant for
+    The forward slash tells Vim you're performing a search. Searching is a lot
+    more powerful since Vim supports regular expressions - a language meant for
     pattern matching. We won't cover everything here since that would requite
     another tutorial. We'll look at some basics for now.
 
@@ -421,14 +421,15 @@ Search and Replace
     you're looking for and then, in command mode, typing * (Shift-8) or #
     (Shift-3). Can you see the difference between the two?
   - If ERROR is the first word in the line : /^ERROR
-  - If you want to match a single character but don't know what the charactor
+  - If you want to match a single character but don't know what the character
     is, type . (similar to ? in DOS). Thus if you know that string you're
     looking for could be either kubuntu or xubuntu, you can type /.ubuntu
   - The * token is one you'll find very useful. * means "match 0 or more
-    repitions of the character preceeding the *". Thus typing /w.*y would match
-    both wordy and wonderfully. Using .* is quite similar to using * in DOS
+    repetitions of the character preceding the *". Thus typing /w.*y would 
+    match both wordy and wonderfully. Using .* is quite similar to using * in
+    DOS.
   - You can also use $ to represent the end of a line.
-  - Regular expressions give you very powerul pattern matching abilities but
+  - Regular expressions give you very powerful pattern matching abilities but
     we'll stop with so much for now.
 
   Search and Replace
@@ -439,21 +440,21 @@ Search and Replace
     separate tutorial (on regular expressions, which we'll see in a bit).
   - Speaking about the ex editor, you've been using a lot of its features
     already. Every command that starts with a : is an ex command. The : symbol
-    tells vim to go to ex mode.
+    tells Vim to go to ex mode.
   - Suppose you have a variable called "name" in your code and you want to
     change it to firstName in all places, type the following:
       
       :%s/name/firstName/g
 
-    Let's break this down a bit. As stated above, the : tells vim to go to ex
+    Let's break this down a bit. As stated above, the : tells Vim to go to ex
     mode. The % means that ex should apply the command to all lines in the
     file. Omitting it would make the command work only on the current line. The
     command is followed by a forward slash - / and then by the pattern you want
     to search for. The pattern is followed by another forward slash. Next you
     add the replacement string followed by a last forward slash. Finally you
     see g which stands for global. Without it, ex would do the replacement only
-    in the first occurence of a particular line.
-  - There may be times when you want vim to ask you if you want to do the
+    in the first occurrence of a particular line.
+  - There may be times when you want Vim to ask you if you want to do the
     replacement. In such a case type,
 
       :%s/name/firstName/gc
@@ -464,6 +465,7 @@ Search and Replace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Miscellaneous features - spell check, backups and crash recovery
+----------------------------------------------------------------
 
   - Vim has a dictionary that allows for spell check and spell suggestions.
   - To turn spell check on, type :set spell. Vim will now highlight all
@@ -471,7 +473,7 @@ Miscellaneous features - spell check, backups and crash recovery
   - With spell check on, go to a highlighted word and type z= to open a list of
     suggestions. Type the serial number of the suggestion to make the change.
     If you are sure that the spelling you typed is correct, you can add it to
-    vim's dictionary by typing zg.
+    Vim's dictionary by typing zg.
   - Vim allows you to easily navigate to all spelling errors. Type ]s to move
     to the next error and [s to move to the previous.
 
@@ -479,21 +481,34 @@ Miscellaneous features - spell check, backups and crash recovery
     previous version - just one). To do this type :set backup (or add it to
     your vimrc).
 
-  - Most importantly, vim helps you recover easily from crashes. Vim creates a
+  - Most importantly, Vim helps you recover easily from crashes. Vim creates a
     swap file which contains the changes you made since you opened the file.
     The swap file is updated either after you type 200 characters or if you 
     don't type anything for 4 seconds.
-  - Suppose vim or your computer crashes and you need to recover your file. Run
+  - Suppose Vim or your computer crashes and you need to recover your file. Run
     the following:
     
-      vim -r filename
+      Vim -r filename
 
-  - If you started with an unamed file type
+  - If you started with an unnamed file type
 
-      vim -r ""
+      Vim -r ""
    
   - To list the files that can be recovered type
 
-      vim -r
+      Vim -r
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+References
+----------
+
+  1. Vim's homepage: www.vim.org
+  2. Vim Tips wiki: http://vim.wikia.com - contains a ton of useful stuff on
+  using Vim. Searching for any help will normally return a page from this 
+  website as the first result.
+  3. Learning the vi and Vim Editors by Arnold Robbins, Elbert Hannah, and 
+  Linda Lamb, 7th edition - An excellent book on learning the Vim editor.
+  Covers a large chunk of its features.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
