@@ -41,7 +41,7 @@ How do I learn Vim?
 -------------------
 
   - Practice and practice
-  - To learn, in your terminal, run $Vimtutor
+  - To learn, in your terminal, run $vimtutor
                  OR
     Go through with this workshop.
 
@@ -52,9 +52,6 @@ Basics
 
   - Vim is modal - has insert, command and visual modes.
   - Use insert mode to type, command mode to run Vim commands.
-  - There are two visual modes. Typing v enters visual mode that allows you to
-    select one character at a time. Typing V enters visual line mode that
-    allows you to select one line at a time.
   - When Vim begins, you're in command mode. Type i to enter into
     insert mode. If you type, notice that characters appear before character
     above the cursor.
@@ -138,8 +135,13 @@ Editing text
 Visual Mode
 -----------
   - Now that we're a bit familiar with Vim, we can talk about the visual mode.
-    As mentioned in the introduction there are actually two forms of visual
-    mode - visual mode and visual line mode.
+  - There are three visual modes:
+      . Character Visual mode : You can go to this mode by typing v. This mode
+      lets you select one character at a time.
+      . Line Visual mode : Type V to enter line visual mode. This allows you to
+      select text a line at a time.
+      . Block Visual mode : Block visual mode is enabled by typing Ctrl+B. This
+      allows you to select blocks of text at a time.
   - Visual mode lets you select text. This can be intuitive when copying a
     block of text which doesn't have markers (or if you don't remember what
     they are). All you need to do is go to visual mode, select the text you
@@ -389,7 +391,7 @@ augroup END
     selection of character sin visual mode.
   - More on changing case: Select a block of text in visual mode. Type gU to
     change the selection to upper case. Type gu to change it all to lower case.
-    You can do this using the movement keys as well - guw will change the word
+    You can do this using the movement keys as well - guu will change the word
     to lower case and gUU will change a line to upper case
 
 
